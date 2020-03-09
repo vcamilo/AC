@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
+import os
 app = Flask(__name__)
 
 
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'db_user'
-app.config['MYSQL_PASSWORD'] = 'db_user'
-app.config['MYSQL_DB'] = 'users'
+app.config['MYSQL_HOST'] = os.getenv('mysql_host')
+app.config['MYSQL_USER'] = os.getenv('mysql_user')
+app.config['MYSQL_PASSWORD'] = os.getenv('mysql_pwd')
+app.config['MYSQL_DB'] = os.getenv('mysql_db')
 
 mysql = MySQL(app)
 
