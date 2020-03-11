@@ -30,7 +30,7 @@ def listar():
     if request.method == "GET":
         cur = mysql.connection.cursor()
         cur.execute("SELECT * from  MyUsers")
-        result = cursor.fetchall()
+        result = cur.fetchall()
         cur.close()
         return render_template("listagem.html", names=result)
 
