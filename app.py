@@ -25,6 +25,13 @@ def index():
         return render_template('success.html')
     return render_template('index.html')
 
+@app.route('/listar')
+def listar():
+    if request.method == "GET":
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT * from  MyUsers")
+        cur.close()
+        return render_template("listagem.html", names=cur)
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
