@@ -30,8 +30,9 @@ def listar():
     if request.method == "GET":
         cur = mysql.connection.cursor()
         cur.execute("SELECT * from  MyUsers")
+        result = cursor.fetchall()
         cur.close()
-        return render_template("listagem.html", names=cur)
+        return render_template("listagem.html", names=result)
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
